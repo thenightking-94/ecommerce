@@ -2,8 +2,8 @@ import { React, useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './Components/Home';
 import ViewCart from './Components/ViewCart';
-import Login from './Components/Login';
 import ViewItem from './Components/ViewItem';
+import AlertComponent from './Components/AlertComponent';
 
 function App() {
   let [counter, setcounter] = useState(0);
@@ -22,9 +22,8 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route exact path='/' component={Login} />
-        <Route exact path='/allItems' component={Home} />
-        <Route exact path='/allItems/:itemId' component={ViewItem} />
+        <Route exact path='/' component={Home} />
+        <Route exact path='/:itemId' component={ViewItem} />
         <Route exact path='/checkout' component={ViewCart} />
       </Switch>
     </div>

@@ -9,12 +9,54 @@
   justify-content: center;
   align-items: center;
   background-image: url("/src/Assets/loginImage.jpg");
- background-size: cover;
+  background-size: cover;
   padding: 10px;
 }
 
 #login_grid {
   margin-top: 15%;
+}
+.input_pad {
+  text-align: center;
+}
+
+.input_pad p {
+  color: white;
+  font-size: 18px;
+  font-family: roboto_regular;
+}
+.input_pad input {
+  border: none;
+  height: 25px;
+  outline: none;
+  width: 200px;
+  padding: 5px;
+}
+
+.login_button {
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.login_button :hover {
+  background-color: black;
+  color: lightskyblue;
+  font-family: roboto_bold;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header_grid {
+  padding: 10px;
+  text-align: center;
 }
 
 @media only screen and (max-width: 760px) {
