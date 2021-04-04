@@ -33,7 +33,7 @@ export default function AlertComponent(props) {
                 closeAfterTransition
                 BackdropComponent={Backdrop}
                 BackdropProps={{
-                    timeout: 500,
+                    timeout: props.delay,
                 }}
             >
                 <Fade in={true}>

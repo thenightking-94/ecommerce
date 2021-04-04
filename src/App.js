@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './Components/Home';
-import ViewCart from './Components/ViewCart';
 
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
     <div>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/checkout/:counter' component={ViewCart} />
       </Switch>
     </div>
   );

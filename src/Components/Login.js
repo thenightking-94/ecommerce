@@ -116,7 +116,7 @@ export default function Login(props) {
                 </div>
             }
             {
-                creds && <AlertComponent text={"Please enter correct proper credentials"} />
+                creds && <AlertComponent text={"Please enter correct proper credentials"} delay={2000} />
             }
         </div>
     )

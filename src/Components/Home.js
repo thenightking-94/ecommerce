@@ -21,7 +21,7 @@ export default function Home() {
     const [ids, setids] = useState([]);
     const [show, setShow] = useState(false);
     const [items, setItems] = useState([]);
-
+    const [priceTotal, setPrice] = useState(0);
 
 
     const items_added_to_cart = useSelector(state => state.items_picked);
@@ -41,14 +41,18 @@ export default function Home() {
         });
         my_promise.then(res => res.json()).then(json => {
             dispatch({ type: 'GOT_PRODUCT_DATA', product_data: json, got_data_product: true });
-        })
+        }).catch(er => console.error(er))
     }, [])
+
+
 
     function render_diff_images(data, index = current_index) {
         let html = "";
         html += "<img src='" + data[index] + "' />";
         $('.autoswiper_block').html(html);
     }
+
+
 
     useEffect(() => {
         setTimeout(() => {
@@ -62,19 +66,28 @@ export default function Home() {
     }, [current_index])
 
 
+
     useEffect(() => {
         if (received_response) {
             setShow(true);
             setItems(product_obj.men);
+            localStorage.setItem("all_products", JSON.stringify(product_obj))
         }
     }, [received_response])
 
 
+
     const add_to_cart = (e) => {
+        let price = priceTotal ? priceTotal : 0;
+        let ele = document.querySelector("span[id='" + CSS.escape(e.target.id) + "']");
+        if (ele) {
+            price += Number(ele.innerHTML);
+        }
         let ids_array = ids ? ids : [];
         ids_array = [...ids_array, e.target.id];
         setids(ids_array)
         setCounter(counter_item => counter_item + 1)
+        setPrice(price);
         let counter = 0;
         for (let i = 0; i < ids_array.length; i++) {
             if (e.target.id == ids_array[i])
@@ -90,7 +103,14 @@ export default function Home() {
         }
     }
 
+
+
     const remove_from_cart = (e) => {
+        let price = priceTotal ? priceTotal : 0;
+        let ele = document.querySelector("span[id='" + CSS.escape(e.target.id) + "']");
+        if (ele) {
+            price -= Number(ele.innerHTML);
+        }
         let ids_array = ids ? ids : [];
         let new_array_after_removal = [];
         for (let i = 0; i < ids_array.length; i++) {
@@ -101,6 +121,7 @@ export default function Home() {
 
         }
         setids(new_array_after_removal);
+        setPrice(price);
         setCounter(counter_item => counter_item - 1);
         let counter = 0;
         for (let i = 0; i < new_array_after_removal.length; i++) {
@@ -116,9 +137,12 @@ export default function Home() {
         }
     }
 
+
+
     useEffect(() => {
         dispatch({ type: "ITEM_ADDED", items_picked: ids });
     }, [ids])
+
 
 
     useEffect(() => {
@@ -130,7 +154,7 @@ export default function Home() {
 
     return (
         <div>
-            <Header counter_cart={counter_item} />
+            <Header counter_cart={counter_item} price={priceTotal} />
             <div className="autoswiper_block" />
             <br />
             <br />
@@ -201,8 +225,11 @@ export default function Home() {
                                         </p>
                                         <br />
                                         <br />
-                                        <p>
-                                            Price:&nbsp; {item.price}
+                                        <p className="flex_row_less_space">
+                                            Price:&nbsp;
+                                            <span id={item.id}>
+                                                {item.price}
+                                            </span>
                                         </p>
                                         <br />
                                         <div className="flex_row_less_space">
@@ -233,8 +260,11 @@ export default function Home() {
                                         </p>
                                         <br />
                                         <br />
-                                        <p>
-                                            Price:&nbsp; {item.price}
+                                        <p className="flex_row_less_space">
+                                            Price:&nbsp;
+                                            <span id={item.id}>
+                                                {item.price}
+                                            </span>
                                         </p>
                                         <br />
                                         <div className="flex_row_less_space">
