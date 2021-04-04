@@ -31,38 +31,51 @@ export default function Header(props) {
                         <img style={{ height: '45px', width: '150px' }} src={logo} />
                     </Grid>
                     <Grid item md={6} />
-                    <Grid item md={3} className="flex_row_less_space during_mobile">
-                        {logged &&
+
+                    {
+                        !props.loggedIn &&
+                        <Grid item md={3} className="flex_row_less_space during_mobile">
+                            {logged &&
+                                <p>My Account</p>
+                            }
+                            {
+                                !logged &&
+                                <p>Not Logged in</p>
+                            }
+                            {
+                                logged &&
+                                <div style={{ fontSize: '25px' }}><ShoppingCartIcon />{props.counter_cart}</div>
+                            }
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {
+                                logged && props.counter_cart > 0 &&
+                                <div onClick={() => {
+                                    goCart(true);
+                                }} style={{ fontSize: '20px', cursor: "pointer" }}>ViewCart</div>
+                            }
+                        </Grid>
+                    }
+                    {
+                        props.loggedIn &&
+                        <Grid item md={3} className="flex_row_less_space during_mobile">
                             <p>My Account</p>
-                        }
-                        {
-                            !logged &&
-                            <p>Not Logged in</p>
-                        }
-                        {
-                            logged &&
                             <div style={{ fontSize: '25px' }}><ShoppingCartIcon />{props.counter_cart}</div>
-                        }
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        {
-                            logged && props.counter_cart > 0 &&
-                            <div onClick={() => {
-                                goCart(true);
-                            }} style={{ fontSize: '20px', cursor: "pointer" }}>ViewCart</div>
-                        }
-                    </Grid>
+                        </Grid>
+
+                    }
+
                 </Grid>
                 <br />
 
             </div>
-            {
+            {!props.loggedIn &&
                 <Login pass_data_to_parent={check_if_logged} />
             }
             {
                 cart &&
-                <Redirect to='/checkout' />
+                <Redirect to={`/checkout/${props.counter_cart}`} />
             }
-        </div>
+        </div >
     )
 
 }

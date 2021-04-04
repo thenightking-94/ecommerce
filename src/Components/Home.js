@@ -70,23 +70,6 @@ export default function Home() {
     }, [received_response])
 
 
-
-    const change_view = (e) => {
-        if (view == "men") {
-            let el = document.getElementById("women");
-            if (el)
-                el.style.pointerEvents = "none"
-            setView("women")
-        }
-        if (view == "women") {
-            let el = document.getElementById("men");
-            if (el)
-                el.style.pointerEvents = "none"
-            setView("men")
-        }
-
-    }
-
     const add_to_cart = (e) => {
         let ids_array = ids ? ids : [];
         ids_array = [...ids_array, e.target.id];
@@ -137,7 +120,7 @@ export default function Home() {
         dispatch({ type: "ITEM_ADDED", items_picked: ids });
     }, [ids])
 
-    
+
     useEffect(() => {
         console.log(items_added_to_cart)
         localStorage.setItem("ids_of_items", JSON.stringify(items_added_to_cart))
@@ -153,7 +136,10 @@ export default function Home() {
             <br />
             <div className="categories_block">
                 <Grid container className="cat_grid">
-                    <Grid id="men" onClick={change_view} item sm={5} md={5} xs={12}>
+                    <Grid id="men" onClick={() => {
+                        setView("men")
+                    }}
+                        item sm={5} md={5} xs={12}>
                         <img src={men} />
                         <br />
                         <br />
@@ -174,14 +160,17 @@ export default function Home() {
                     </Grid>
                     <Grid item sm={2} md={2} />
 
-                    <Grid id="women" onClick={change_view} item sm={5} md={5} xs={12}>
+                    <Grid id="women" onClick={() => {
+                        setView("women")
+                    }}
+                        item sm={5} md={5} xs={12}>
                         <img src={women} />
                         <br />
                         <br />
                         {
                             view == "women" &&
                             <p style={{ backgroundColor: '#e88d14', padding: '10px', borderRadius: '5px', color: 'white' }}>
-                                Men Sports Accessories
+                                Women Sports Accessories
                         </p>
                         }
                         {

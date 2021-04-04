@@ -22,7 +22,7 @@ function App() {
     <div>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/checkout' component={ViewCart} />
+        <Route exact path='/checkout/:counter' component={ViewCart} />
       </Switch>
     </div>
   );
