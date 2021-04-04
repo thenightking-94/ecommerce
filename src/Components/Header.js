@@ -14,13 +14,13 @@ export default function Header() {
         <div>
             <div className="header">
                 <Grid container className="header_grid">
-                    <Grid item md={2}>
+                    <Grid item md={1}>
                         <MenuIcon />
                     </Grid>
-                    <Grid item md={3}>
+                    <Grid item md={2}>
                         <img style={{ height: '45px', width: '150px' }} src={logo} />
                     </Grid>
-                    <Grid item md={4} />
+                    <Grid item md={6} />
                     <Grid item md={3}>
                         {logged &&
                             <p>My Account</p>
@@ -30,7 +30,7 @@ export default function Header() {
                             <p>Login</p>
                         }
                         {
-                            localStorage.getItem("check_if_logged") == "yes" &&
+                            logged &&
                             <div><ShoppingCartIcon />{counter}</div>
                         }
                     </Grid>
