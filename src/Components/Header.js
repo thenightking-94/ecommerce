@@ -53,7 +53,7 @@ export default function Header(props) {
                         }
                          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                         {
-                            logged && props.price > 0 && <div style={{ fontSize: '20px' }}>Price: &nbsp;&nbsp; {props.price}</div>
+                            logged && props.price > 0 && <div style={{ fontSize: '22px' }}>Price: &nbsp;&nbsp; {props.price}</div>
                         }
                          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                        {

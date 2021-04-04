@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+#I have designed the entire project taking care the requirements as asked.
+#The library I have used is React, along with Redux.
+#The entire app is written in React-hooks and Redux-hooks.
+#Majority of the State management is performed using React hooks.
+#Transaction of User data and maintaining and updated list of items in the cart is performed using Redux.
+#For better user experience I have used Material-UI library.
+# Features:
+1. Login System.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A login system is designed using a self created sample JSON file of 5 users, which I am providing below. Without performing login No-user will be able to scroll
+through the webpage. Appropiate error messages are shown during incorrect credentials using React Material-UI modals.
 
-## Available Scripts
+{
+"users":[
+{
+"username":"John",
+"password":"12345"
+},
+{
+"username":"Daniel",
+"password":"12345"
+},
+{
+"username":"Shubham",
+"password":"12345"
+},
+{
+"username":"Roger",
+"password":"12345"
+},
+{
+"username":"Sachin",
+"password":"12345"
+}
+]
+}
 
-In the project directory, you can run:
+2. Categories added for Men and Women Sports Accessories + Add to Cart/Remove from Cart
 
-### `npm start`
+Two categories of products have been added mainly for listing through various products. Users can Add and Remove products from the carts.
+The entire listing of all the updated items is done mainly through redux.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+{
+"men":[
+{
+"id":"1M",
+"name":"Men's Jacket",
+"price":"2000",
+"src":"https://5.imimg.com/data5/RW/BL/MY-41911033/casual-mens-jacket-500x500.jpg"
+},
+{
+"id":"2M",
+"name":"Gloves",
+"price":"700",
+"src":"https://5.imimg.com/data5/JL/OO/EU/SELLER-2917002/red-boxing-gloves-500x500.jpg"
+},
+{
+"id":"3M",
+"name":"Men's Track pants",
+"price":"1000",
+"src":"https://m.media-amazon.com/images/I/41BJv2qFuYL.jpg"
+}
+],
+"women":[
+{
+"id":"1W",
+"name":"Women's Jacket",
+"price":"2000",
+"src":"https://5.imimg.com/data5/LC/WC/WJ/SELLER-15826271/full-sleeve-solid-women-s-jacket-500x500.jpg"
+},
+{
+"id":"2W",
+"name":"Gloves",
+"price":"500",
+"src":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6G11oHKmP8RH_-kxPh8Df7R2H0ymATZmI9A&usqp=CAU"
+},
+{
+"id":"3W",
+"name":" Women's Track pants",
+"price":"2000",
+"src":"https://assetscdn1.paytm.com/images/catalog/product/A/AP/APPTHE-DRY-STATTHE-8788633E338F9/1592196852279_0..jpg"
+}
+]
+}
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Header has the option to see the number of items added to cart and the total price as users Add/Remove products to the Cart.
+   
+   Also a "proceed to checkout" feature has been added which refreshes the data and logs out the user.
