@@ -1,4 +1,5 @@
 .login_div {
+  z-index: 20;
   height: 350px;
   width: 100%;
   border-radius: 10px;
@@ -13,9 +14,6 @@
   padding: 10px;
 }
 
-#login_grid {
-  margin-top: 15%;
-}
 .input_pad {
   text-align: center;
 }
@@ -49,6 +47,7 @@
 }
 
 .header {
+  z-index: 50;
   position: fixed;
   top: 0;
   width: 100%;
@@ -62,8 +61,19 @@
   align-items: center;
 }
 
+.autoswiper_block {
+  width: 100%;
+  height: 400px;
+  margin-top: 100px;
+}
+
+.autoswiper_block img {
+  height: 500px;
+  width: 100%;
+}
+
 @media only screen and (max-width: 760px) {
-  #login_grid {
-    margin-top: 20%;
+  .during_mobile {
+    margin-right: -70px;
   }
 }

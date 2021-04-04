@@ -42,11 +42,11 @@ export default function Login(props) {
             let name = $("#name").val().trim();
             let password = $("#password").val().trim();
             if (name != "" && password != "") {
-                console.log(name, password)
+                //console.log(name, password)
                 let userdata = [];
                 let flag = false;
                 userdata = [...(user_json_obj.users)];
-                console.log(userdata)
+                //console.log(userdata)
                 userdata.map(function (item) {
                     if (item.username == name && item.password == password)
                         flag = true;
@@ -80,7 +80,7 @@ export default function Login(props) {
     return (
         <div>
             {!loggedIn &&
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ textAlign: 'center', position: 'fixed', top: '400px', width: '100%' }}>
                     <Grid id="login_grid" container style={{ width: '100%' }}>
                         <Grid item md={4} />
                         <Grid item md={4} xs={12}>
