@@ -5,10 +5,11 @@ import logo from '../Assets/logo.png';
 import '../CSS/all_pages_css.css';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Login from './Login';
+import { Redirect } from 'react-router-dom';
 
-export default function Header() {
-    let [counter, setcounter] = useState(0);
+export default function Header(props) {
     let [logged, setlogged] = useState(false);
+    let [cart, goCart] = useState(false);
 
 
     const check_if_logged = (data) => {
@@ -40,15 +41,26 @@ export default function Header() {
                         }
                         {
                             logged &&
-                            <div><ShoppingCartIcon />{counter}</div>
+                            <div style={{ fontSize: '25px' }}><ShoppingCartIcon />{props.counter_cart}</div>
+                        }
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {
+                            logged && props.counter_cart > 0 &&
+                            <div onClick={() => {
+                                goCart(true);
+                            }} style={{ fontSize: '20px', cursor: "pointer" }}>ViewCart</div>
                         }
                     </Grid>
                 </Grid>
-<br/>
+                <br />
 
             </div>
             {
                 <Login pass_data_to_parent={check_if_logged} />
+            }
+            {
+                cart &&
+                <Redirect to='/checkout' />
             }
         </div>
     )

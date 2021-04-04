@@ -1,5 +1,5 @@
 .login_div {
-  z-index: 20;
+  z-index: 9999;
   height: 350px;
   width: 100%;
   border-radius: 10px;
@@ -13,6 +13,8 @@
   background-size: cover;
   padding: 10px;
   box-shadow: 5px 10px 8px #888888;
+  -webkit-animation: scale-up-center 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: scale-up-center 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .input_pad {

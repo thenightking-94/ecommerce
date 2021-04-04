@@ -10,12 +10,16 @@ import AlertComponent from './AlertComponent';
 
 export default function Login(props) {
     let [creds, setCreds] = useState(false);
-    let [loggedIn, setLogged] = useState(true);
+    let [loggedIn, setLogged] = useState(false);
     let user_json_obj = useSelector(state => state.user_login_obj);
     let dispatch = useDispatch();
 
 
     useEffect(() => {
+        let doc = document.documentElement;
+        if (doc) {
+            doc.style.overflow = "hidden"
+        }
         props.pass_data_to_parent(false);
         const my_promise = fetch("./user_login.json", {
             method: 'GET',
@@ -29,7 +33,15 @@ export default function Login(props) {
         })
     }, [])
 
+    useEffect(() => {
+        if (loggedIn) {
+            let doc = document.documentElement;
+            if (doc) {
+                doc.style.overflow = "auto"
+            }
+        }
 
+    }, [loggedIn])
 
     useEffect(() => {
         console.log(user_json_obj)
