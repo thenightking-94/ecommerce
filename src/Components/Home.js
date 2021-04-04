@@ -9,15 +9,22 @@ import men from '../Assets/men.jpg';
 import women from '../Assets/women.jpg';
 import Footer from './Footer';
 import { useDispatch, useSelector } from 'react-redux';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+const array_images = [timer1, timer2, timer3];
+
 
 
 
 export default function Home() {
     const [current_index, setIndex] = useState(0);
+    const [view, setView] = useState("men");
+    const [show, setShow] = useState(false);
+    const [items, setItems] = useState([]);
     const product_obj = useSelector(state => state.product_data);
     const received_response = useSelector(state => state.got_data_product);
     const dispatch = useDispatch();
-    const array_images = [timer1, timer2, timer3];
+
 
     useEffect(() => {
         render_diff_images(array_images, current_index);
@@ -52,15 +59,24 @@ export default function Home() {
 
 
     useEffect(() => {
-        console.log(product_obj)
+        if (received_response) {
+            setShow(true);
+            setItems(product_obj.men);
+        }
     }, [received_response])
 
 
 
     const change_view = () => {
-
+        if (view == "men")
+            setView("women")
+        if (view == "women")
+            setView("men")
     }
 
+    const pick_product = () => {
+
+    }
 
 
 
@@ -76,9 +92,20 @@ export default function Home() {
                         <img src={men} />
                         <br />
                         <br />
-                        <p>
-                            Men Sports Accessories
+                        {
+                            view == "men" &&
+                            <p style={{ backgroundColor: '#e88d14', padding: '10px', borderRadius: '5px', color: 'white' }}>
+                                Men Sports Accessories
                         </p>
+                        }
+                        {
+                            view != "men" &&
+                            <p>
+                                Men Sports Accessories
+                            </p>
+
+                        }
+
                     </Grid>
                     <Grid item sm={2} md={2} />
 
@@ -86,14 +113,91 @@ export default function Home() {
                         <img src={women} />
                         <br />
                         <br />
-                        <p>
-                            Women Sports Accessories
+                        {
+                            view == "women" &&
+                            <p style={{ backgroundColor: '#e88d14', padding: '10px', borderRadius: '5px', color: 'white' }}>
+                                Men Sports Accessories
                         </p>
+                        }
+                        {
+                            view != "women" &&
+                            <p>
+                                Women Sports Accessories
+                            </p>
+
+                        }
+
                     </Grid>
                 </Grid>
-                <br />
-                <Footer />
             </div>
+            <br />
+            {
+                view == "men" &&
+                <div className="products">
+                    <Grid container className="products_grid">
+                        {
+                            items.length != 0 && show && items.map(function (item) {
+                                return (
+                                    < Grid key={item.id} onClick={pick_product} item sm={4} md={4} xs={12} >
+                                        <img src={item.src} />
+                                        <br />
+                                        <br />
+                                        <p>
+                                            Name:&nbsp;{item.name}
+                                        </p>
+                                        <br />
+                                        <br />
+                                        <p>
+                                            Price:&nbsp; {item.price}
+                                        </p>
+                                        <br />
+                                        <div className="flex_row_less_space">
+                                            <AddIcon />
+                                            &nbsp;
+                                            <RemoveIcon />
+                                        </div>
+                                    </Grid>
+                                )
+                            })
+                        }
+                    </Grid>
+                </div>
+            }
+            {
+                view == "women" &&
+                <div className="products">
+                    <Grid container className="products_grid">
+                        {
+                            received_response && show && product_obj["women"].map(function (item) {
+                                return (
+                                    < Grid key={item.id} onClick={pick_product} item sm={4} md={4} xs={12} >
+                                        <img src={(item.src)} />
+                                        <br />
+                                        <br />
+                                        <p>
+                                            Name:&nbsp;{item.name}
+                                        </p>
+                                        <br />
+                                        <br />
+                                        <p>
+                                            Price:&nbsp; {item.price}
+                                        </p>
+                                        <br />
+                                        <div className="flex_row_less_space">
+                                            <AddIcon />
+                                            &nbsp;
+                                            <RemoveIcon />
+                                        </div>
+                                    </Grid>
+                                )
+                            })
+                        }
+                    </Grid>
+                </div>
+            }
+            <br />
+            <br />
+            <Footer />
         </div>
     )
 }

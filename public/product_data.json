@@ -1,42 +1,42 @@
 {
 "men":[
 {
-"id":"1",
-"name":"Jacket",
+"id":"1M",
+"name":"Men's Jacket",
 "price":"2000",
-"src":"../Assets/jacket.jpg"
+"src":"https://5.imimg.com/data5/RW/BL/MY-41911033/casual-mens-jacket-500x500.jpg"
 },
 {
-"id":"2",
+"id":"2M",
 "name":"Gloves",
-"price":"1000",
-"src":"../Assets/boxing.jpg"
+"price":"700",
+"src":"https://5.imimg.com/data5/JL/OO/EU/SELLER-2917002/red-boxing-gloves-500x500.jpg"
 },
 {
-"id":"3",
-"name":"Track pants",
+"id":"3M",
+"name":"Men's Track pants",
 "price":"1000",
-"src":"../Assets/pants_m.jpg"
+"src":"https://m.media-amazon.com/images/I/41BJv2qFuYL.jpg"
 }
 ],
 "women":[
 {
-"id":"1",
-"name":"Jacket",
+"id":"1W",
+"name":"Women's Jacket",
 "price":"2000",
-"src":"../Assets/jacket_w.JPEG"
+"src":"https://5.imimg.com/data5/LC/WC/WJ/SELLER-15826271/full-sleeve-solid-women-s-jacket-500x500.jpg"
 },
 {
-"id":"2",
+"id":"2W",
 "name":"Gloves",
-"price":"1000",
-"src":"../Assets/boxing.jpg"
+"price":"500",
+"src":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6G11oHKmP8RH_-kxPh8Df7R2H0ymATZmI9A&usqp=CAU"
 },
 {
-"id":"3",
-"name":"Track pants",
-"price":"1000",
-"src":"../Assets/pants_w.jpg"
+"id":"3W",
+"name":" Women's Track pants",
+"price":"2000",
+"src":"https://assetscdn1.paytm.com/images/catalog/product/A/AP/APPTHE-DRY-STATTHE-8788633E338F9/1592196852279_0..jpg"
 }
 ]
 }
