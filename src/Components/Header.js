@@ -10,6 +10,15 @@ export default function Header() {
     let [counter, setcounter] = useState(0);
     let [logged, setlogged] = useState(false);
 
+
+    const check_if_logged = (data) => {
+        if (data)
+            setlogged(true)
+        if (!data)
+            setlogged(false)
+
+    }
+
     return (
         <div>
             <div className="header">
@@ -38,7 +47,7 @@ export default function Header() {
 
             </div>
             {
-                <Login />
+                <Login pass_data_to_parent={check_if_logged} />
             }
         </div>
     )

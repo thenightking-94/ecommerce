@@ -8,13 +8,15 @@ import AlertComponent from './AlertComponent';
 
 
 
-export default function Login() {
+export default function Login(props) {
     let [creds, setCreds] = useState(false);
+    let [loggedIn, setLogged] = useState(false);
     let user_json_obj = useSelector(state => state.user_login_obj);
     let dispatch = useDispatch();
 
 
     useEffect(() => {
+        props.pass_data_to_parent(false);
         const my_promise = fetch("./user_login.json", {
             method: 'GET',
             headers: {
@@ -41,6 +43,19 @@ export default function Login() {
             let password = $("#password").val();
             if (name != "" && password != "") {
                 console.log(name, password)
+                let userdata = [];
+                let flag = false;
+                userdata = [...(user_json_obj.users)];
+                console.log(userdata)
+                userdata.map(function (item) {
+                    if (item.username == name && item.password == password)
+                        flag = true;
+                })
+                if (flag) {
+                    setLogged(true);
+                    props.pass_data_to_parent(true);
+                }
+
             }
             else {
                 setCreds(true);
@@ -56,31 +71,33 @@ export default function Login() {
         }
     }, [creds])
 
-    
+
     return (
         <div>
-            <div style={{ textAlign: 'center' }}>
-                <Grid id="login_grid" container style={{ width: '100%' }}>
-                    <Grid item md={4} />
-                    <Grid item md={4} xs={12}>
-                        <div className="login_div">
-                            <br />
-                            <div />
-                            <div className="input_pad">
-                                <div className="flex_row"> <p>Name </p>&nbsp;&nbsp;<input id="name" type="text" autoComplete="off" placeholder="...." /></div>
+            {!loggedIn &&
+                <div style={{ textAlign: 'center' }}>
+                    <Grid id="login_grid" container style={{ width: '100%' }}>
+                        <Grid item md={4} />
+                        <Grid item md={4} xs={12}>
+                            <div className="login_div">
                                 <br />
-                                <div className="flex_row"> <p>Password </p>&nbsp;&nbsp;<input id="password" type="password" placeholder="..." /></div>
+                                <div />
+                                <div className="input_pad">
+                                    <div className="flex_row"> <p>Name </p>&nbsp;&nbsp;<input id="name" type="text" autoComplete="off" placeholder="...." /></div>
+                                    <br />
+                                    <div className="flex_row"> <p>Password </p>&nbsp;&nbsp;<input id="password" type="password" placeholder="..." /></div>
+                                </div>
+                                <br />
+                                <br />
+                                <div onClick={checkLogin} className="login_button" >
+                                    Please Login to continue
+                   </div>
                             </div>
-                            <br />
-                            <br />
-                            <div onClick={checkLogin} className="login_button" >
-                                Please Login to continue
-                        </div>
-                        </div>
+                        </Grid>
+                        <Grid item md={4} />
                     </Grid>
-                    <Grid item md={4} />
-                </Grid>
-            </div>
+                </div>
+            }
             {
                 creds && <AlertComponent text={"Please enter correct proper credentials"} />
             }

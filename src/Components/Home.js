@@ -6,6 +6,9 @@ export default function Home() {
     return (
         <div>
             <Header />
+            <div className="autoswiper_block">
+
+            </div>
         </div>
     )
 }
