@@ -18,3 +18,10 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.flex_row_less_space {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

@@ -39,8 +39,8 @@ export default function Login(props) {
 
     const checkLogin = () => {
         if (user_json_obj) {
-            let name = $("#name").val();
-            let password = $("#password").val();
+            let name = $("#name").val().trim();
+            let password = $("#password").val().trim();
             if (name != "" && password != "") {
                 console.log(name, password)
                 let userdata = [];
@@ -54,6 +54,11 @@ export default function Login(props) {
                 if (flag) {
                     setLogged(true);
                     props.pass_data_to_parent(true);
+                }
+                if (!flag) {
+                    setCreds(true)
+                    $("#name").val("");
+                    $("#password").val("");
                 }
 
             }

@@ -30,13 +30,13 @@ export default function Header() {
                         <img style={{ height: '45px', width: '150px' }} src={logo} />
                     </Grid>
                     <Grid item md={6} />
-                    <Grid item md={3}>
+                    <Grid item md={3} className="flex_row_less_space">
                         {logged &&
                             <p>My Account</p>
                         }
                         {
                             !logged &&
-                            <p>Login</p>
+                            <p>Not Logged in</p>
                         }
                         {
                             logged &&
