@@ -10,7 +10,7 @@ import AlertComponent from './AlertComponent';
 
 export default function Login(props) {
     let [creds, setCreds] = useState(false);
-    let [loggedIn, setLogged] = useState(false);
+    let [loggedIn, setLogged] = useState(true);
     let user_json_obj = useSelector(state => state.user_login_obj);
     let dispatch = useDispatch();
 
